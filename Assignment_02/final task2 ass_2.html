@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('imgn.avif');
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #000000;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="date"],
+  select {
+    width: calc(100% - 22px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.8em;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #0e5d37;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>User Registration</h2>
+  <form id="signupForm" onsubmit="return validateForm()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required placeholder="Enter your username">
+    <span id="usernameError" class="error"></span>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required placeholder="Enter your password">
+    <span id="passwordError" class="error"></span>
+
+    <label for="birthdate">Birthdate:</label>
+    <input type="date" id="birthdate" name="birthdate" required>
+    <span id="birthdateError" class="error"></span>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required placeholder="Enter your email">
+    <span id="emailError" class="error"></span>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <span id="genderError" class="error"></span>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" required placeholder="Enter your phone number">
+    <span id="phoneNumberError" class="error"></span>
+
+    <label for="zipcode">Zip Code:</label>
+    <input type="text" id="zipcode" name="zipcode" required placeholder="Enter your zip code">
+    <span id="zipcodeError" class="error"></span>
+
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="country" required placeholder="Enter your country">
+    <span id="countryError" class="error"></span>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<script>
+function validateForm() {
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  var birthdate = document.getElementById('birthdate').value;
+  var email = document.getElementById('email').value;
+  var gender = document.getElementById('gender').value;
+  var phoneNumber = document.getElementById('phoneNumber').value;
+  var zipcode = document.getElementById('zipcode').value;
+  var country = document.getElementById('country').value;
+
+  var isValid = true;
+
+  if (username === '') {
+    document.getElementById('usernameError').innerText = 'Username missing';
+    isValid = false;
+  } else {
+    document.getElementById('usernameError').innerText = '';
+  }
+
+  if (password === '') {
+    document.getElementById('passwordError').innerText = 'Password Missing';
+    isValid = false;
+  } else {
+    document.getElementById('passwordError').innerText = '';
+  }
+
+  if (birthdate === '') {
+    document.getElementById('birthdateError').innerText = 'Birthdate missing';
+    isValid = false;
+  } else {
+    document.getElementById('birthdateError').innerText = '';
+  }
+
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    document.getElementById('emailError').innerText = 'Invalid email format';
+    isValid = false;
+  } else {
+    document.getElementById('emailError').innerText = '';
+  }
+
+  if (gender === '') {
+    document.getElementById('genderError').innerText = 'Gender missing';
+    isValid = false;
+  } else {
+    document.getElementById('genderError').innerText = '';
+  }
+
+  if (phoneNumber === '') {
+    document.getElementById('phoneNumberError').innerText = 'Phone number missing';
+    isValid = false;
+  } else {
+    document.getElementById('phoneNumberError').innerText = '';
+  }
+
+  if (zipcode === '') {
+    document.getElementById('zipcodeError').innerText = 'Zip code missing';
+    isValid = false;
+  } else {
+    document.getElementById('zipcodeError').innerText = '';
+  }
+
+  if (country === '') {
+    document.getElementById('countryError').innerText = 'Country missing';
+    isValid = false;
+  } else {
+    document.getElementById('countryError').innerText = '';
+  }
+
+  return isValid;
+}
+</script>
+
+</body>
+</html>
